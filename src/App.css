@@ -9,7 +9,6 @@
   border-bottom: 1px solid #e5e5e5;
 }
 .header .svg-inline--fa {
-  color: var(--violet);
   font-size: 80px;
   margin-right: 40px;
 }
@@ -29,9 +28,13 @@ span {
   font-weight: bold;
 }
 
+/* Icons */
+.svg-inline--fa {
+  color: var(--violet);
+}
 /* Main */
 .main {
-  margin-top: 15vh;
+  margin-top: 5vh;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -65,20 +68,35 @@ span {
 }
 
 /* task list */
-.task__list {
-  margin-bottom: 5vh;
+.task {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
   font-size: 24px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task__left {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
 }
 .checkbox {
   width: 24px;
   cursor: pointer;
   margin-right: 20px;
 }
-.task__list--item {
+.task--item {
   margin-left: 10px;
   margin-right: 20px;
+  margin-bottom: 10px;
 }
+
+/* Complete tasks */
 .done {
   text-decoration: line-through;
+}
+.completeTasks {
+  display: flex;
+  flex-direction: column;
 }
