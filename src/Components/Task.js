@@ -1,8 +1,13 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
-const Tasklist = ({ task, checked, checkTask, deleteTask }) => {
+const Task = ({ task, deleteTask, taskList }) => {
+  const [checked, setChecked] = useState(false);
+  const checkTask = () => {
+    setChecked(!checked);
+  };
   return (
     <div className="task__list">
       <input
@@ -11,12 +16,14 @@ const Tasklist = ({ task, checked, checkTask, deleteTask }) => {
         name="taskDone"
         className="checkbox"
         checked={checked}
-        onClick={checkTask(task)}
+        onChange={() => checkTask(task)}
       />
-      <div className="task__list--item">{task}</div>
+      <div className={checked ? "task__list--item done" : "task__list--item"}>
+        {task}
+      </div>
       <FontAwesomeIcon icon={faTrash} onClick={() => deleteTask(task)} />
     </div>
   );
 };
 
-export default Tasklist;
+export default Task;

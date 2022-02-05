@@ -1,34 +1,29 @@
 import React from "react";
-import Tasklist from "./Tasklist";
+import Task from "./Task";
 import { useState } from "react";
 
 const Main = () => {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
-  const [checked, setChecked] = useState(false);
 
+  // Update task value before adding it to a the tasklist
   const handleInput = (event) => {
     setTask(event.target.value);
   };
 
-  const addTask = (event) => {
-    event.preventDefault();
-    const newTaskList = [...taskList];
-    newTaskList.push(task);
+  // Add input value to tasklist
+  const addTask = () => {
+    const newTaskList = [task, ...taskList];
     setTaskList(newTaskList);
   };
 
+  // Remove Task from tasklist
   const deleteTask = (task) => {
     for (let i = 0; i < taskList.length; i++) {
       taskList[i] === task && taskList.splice(i, 1);
     }
     const newTaskList = [...taskList];
     setTaskList(newTaskList);
-  };
-
-  const checkTask = (task) => {
-    console.log("check ===> ", task);
-    setChecked(true);
   };
 
   return (
@@ -50,11 +45,10 @@ const Main = () => {
       <div className="list">
         {taskList.map((item, index) => {
           return (
-            <Tasklist
+            <Task
               key={index}
               task={item}
-              checked={checked}
-              checkTask={checkTask}
+              taskList={taskList}
               deleteTask={deleteTask}
             />
           );
