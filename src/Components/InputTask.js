@@ -4,16 +4,18 @@ import axios from "axios";
 const InputTask = ({ task, handleInput, addTask }) => {
   //Link to backend
   window.addEventListener("submit", async (event) => {
+    console.log("event ===>", event);
     try {
       event.preventDefault();
 
       const data = { name: task }; //data that comes from input
       //axios to send
+      console.log("data ===>", data);
       const response = await axios.post(
         "https://todo-list-eld.herokuapp.com/task/create",
         data
       );
-      console.log(response.data);
+      console.log("response is here ==>", response.data);
     } catch (error) {
       console.log("error message : ", error.message);
       console.log("error response : ", error.response);
