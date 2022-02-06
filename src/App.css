@@ -1,20 +1,52 @@
 :root {
   --violet: #5c48d3;
+  --darkbackground: #242d41;
+  --darkbody: #010920;
+  --darkcheckbox: #4a5264;
+  --darkfont: #fff;
+  --inputgray: #a8a8a8;
+  --lightsecondary: #f2f7fd;
+}
+/* fonts */
+.header .svg-inline--fa {
+  font-size: 3.2em;
+}
+h1 {
+  font-size: 2.5em;
+}
+.violet-btn,
+label,
+.input-task {
+  font-size: 1.2em;
+}
+/* dark mode */
+.dark {
+  background-color: var(--darkbackground);
+  color: var(--darkfont);
+}
+/* App */
+.app {
+  height: 100vh;
+}
+.container {
+  padding: 0 8vw;
 }
 /* Header */
 .header {
-  display: flex;
-  align-items: center;
-  padding: 50px 60px;
+  padding: 2vh 0;
   border-bottom: 1px solid #e5e5e5;
 }
-.header .svg-inline--fa {
-  font-size: 80px;
-  margin-right: 40px;
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-h1 {
-  font-size: 48px;
-  line-height: 59px;
+.header__left {
+  display: flex;
+  align-items: center;
+}
+.header .svg-inline--fa {
+  margin-right: 30px;
 }
 
 /* Footer */
@@ -22,7 +54,7 @@ h1 {
   color: var(--violet);
   display: flex;
   justify-content: center;
-  margin-top: 20vh;
+  margin-top: 10vh;
 }
 span {
   font-weight: bold;
@@ -32,35 +64,41 @@ span {
 .svg-inline--fa {
   color: var(--violet);
 }
+/* Buttons */
+.violet-btn {
+  background-color: var(--violet);
+  color: white;
+  line-height: 27px;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 14px;
+  margin-left: 7vw;
+}
+
 /* Main */
 .main {
   margin-top: 5vh;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.violet-btn {
-  background-color: var(--violet);
-  color: white;
-  font-size: 22px;
-  line-height: 27px;
-  border: none;
-  border-radius: 10px;
-  padding: 18px 16px;
-  margin-left: 57px;
-}
 
 /* input */
+.main__input {
+  margin-bottom: 5vh;
+  width: 100%;
+}
+label {
+  margin-right: 12px;
+}
 .input-task {
-  background: #f2f7fd;
+  background: var(--lightsecondary);
   border: 1px solid var(--violet);
   box-sizing: border-box;
   border-radius: 10px;
-  padding: 20px 25px;
-  font-size: 24px;
-  line-height: 29px;
-  color: #a8a8a8;
+  padding: 20px 2vw;
+  color: var(--lightgray);
 }
 .input-task:active,
 .input-task:focus {
@@ -68,9 +106,14 @@ span {
 }
 
 /* task list */
+.list {
+  background-color: var(--lightsecondary);
+  width: 80%;
+  border-radius: 8px;
+  padding: 0 5vw;
+}
 .task {
-  margin-top: 3vh;
-  margin-bottom: 3vh;
+  margin: 3vh 0;
   font-size: 24px;
   display: flex;
   justify-content: space-between;

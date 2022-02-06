@@ -1,6 +1,7 @@
 import React from "react";
-import Task from "./Task";
+// import Task from "./Task";    //when task completed, line through task but don't move it
 import Taskv2 from "./Taskv2";
+import InputTask from "./InputTask";
 import Search from "./Search";
 import { useState } from "react";
 
@@ -37,6 +38,11 @@ const Main = () => {
     deleteTask(task);
   };
 
+  //Reset array of completed tasks
+  const emptyCompleteList = () => {
+    setCompleteList([]);
+  };
+
   //Search for tasks in tasklist
   const [search, setSearch] = useState("");
   const handleSearch = (event) => {
@@ -47,49 +53,19 @@ const Main = () => {
   });
 
   return (
-    <div className="main">
+    <div className="main container">
+      {/* Input zone to enter your new tasks */}
+      <InputTask task={task} handleInput={handleInput} addTask={addTask} />
+
       {/* Search tasks */}
       <Search search={search} handleSearch={handleSearch} />
-      <div>
-        {search &&
-          searchedTask.map((element, index) => (
-            <div key={index}>{element}</div>
-          ))}
-      </div>
-
-      {/* list of tasks completed */}
-      <div className="completeTasks task done">
-        {completeList.map((item, index) => {
-          return <div className="task--item">{item}</div>;
-        })}
-      </div>
-
-      {/* input zone to enter your new tasks */}
-      <div className="main-input">
-        <input
-          type="text"
-          name="task"
-          className="input-task"
-          placeholder="new task"
-          value={task}
-          onChange={handleInput}
-        />
-        <button className="violet-btn" onClick={addTask}>
-          Add Task
-        </button>
-      </div>
 
       {/* ---------------------------------------------------------- */}
       {/* when task completed, line through task but don't move it */}
       {/* <div className="list">
         {taskList.map((item, index) => {
           return (
-            <Task
-              key={index}
-              task={item}
-              taskList={taskList}
-              deleteTask={deleteTask}
-            />
+            <Task key={index} task={item} taskList={taskList} deleteTask={deleteTask} />
           );
         })}
       </div> */}
@@ -97,16 +73,26 @@ const Main = () => {
       {/* ------------------------------------------------------------ */}
       {/* when task completed, line through task and moves it under input bar */}
       <div className="list">
-        {taskList.map((item, index) => {
+        {(!search ? taskList : searchedTask).map((item, index) => {
           return (
             <Taskv2
               key={index}
               task={item}
-              taskList={taskList}
               deleteTask={deleteTask}
               completeTask={completeTask}
             />
           );
+        })}
+      </div>
+
+      <button className="violet-btn" onClick={emptyCompleteList}>
+        Reset completed tasks
+      </button>
+
+      {/* list of tasks completed */}
+      <div className="completeTasks task done">
+        {completeList.map((item, index) => {
+          return <div className="task--item">{item}</div>;
         })}
       </div>
     </div>
