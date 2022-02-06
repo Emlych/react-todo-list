@@ -5,7 +5,7 @@ import InputTask from "./InputTask";
 import Search from "./Search";
 import { useState } from "react";
 
-const Main = () => {
+const Main = ({ light }) => {
   //States for task and task list
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
@@ -60,6 +60,8 @@ const Main = () => {
       {/* Search tasks */}
       <Search search={search} handleSearch={handleSearch} />
 
+      {/* Two ways to display list of tasks */}
+
       {/* ---------------------------------------------------------- */}
       {/* when task completed, line through task but don't move it */}
       {/* <div className="list">
@@ -72,7 +74,7 @@ const Main = () => {
 
       {/* ------------------------------------------------------------ */}
       {/* when task completed, line through task and moves it under input bar */}
-      <div className="list">
+      <div className={light ? "list list__light" : "list list__dark"}>
         {(!search ? taskList : searchedTask).map((item, index) => {
           return (
             <Taskv2

@@ -19,10 +19,16 @@ label,
 .input-task {
   font-size: 1.2em;
 }
-/* dark mode */
+/* dark-light mode */
 .dark {
   background-color: var(--darkbackground);
   color: var(--darkfont);
+}
+.list__light {
+  background-color: var(--lightsecondary);
+}
+.list__dark {
+  background-color: var(--darkbody);
 }
 /* App */
 .app {
@@ -107,7 +113,6 @@ label {
 
 /* task list */
 .list {
-  background-color: var(--lightsecondary);
   width: 80%;
   border-radius: 8px;
   padding: 0 5vw;
