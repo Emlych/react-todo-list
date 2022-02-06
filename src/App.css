@@ -6,6 +6,13 @@
   --darkfont: #fff;
   --inputgray: #a8a8a8;
   --lightsecondary: #f2f7fd;
+  --switchWidth: 62px;
+  --switchHeight: 31px;
+  --sliderRadius: 29px;
+  --disabledSwitch: #919191;
+  --disabledSlider: #d2d1d1;
+  --checkedSwitchRed: #f2f7fd;
+  --checkedSliderRed: #5c48d3;
 }
 /* fonts */
 .header .svg-inline--fa {
@@ -18,6 +25,10 @@ h1 {
 label,
 .input-task {
   font-size: 1.2em;
+}
+/* Icons */
+.svg-inline--fa {
+  color: var(--violet);
 }
 /* dark-light mode */
 .dark {
@@ -55,6 +66,53 @@ label,
   margin-right: 30px;
 }
 
+/* Header -- toggle button */
+.toggle__button {
+  position: relative;
+}
+.switch {
+  width: var(--switchWidth);
+  height: var(--switchHeight);
+  border-radius: 15px;
+  background-color: var(--disabledSwitch);
+  border: none;
+  transition: all 0.5s ease;
+}
+
+.slider {
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+  background-color: var(--disabledSlider);
+  width: var(--sliderRadius);
+  height: var(--sliderRadius);
+  border-radius: 50%;
+  border: none;
+  box-shadow: 6px 6px 21px -5px rgba(0, 0, 0, 0.61);
+  transition: all 0.5s ease;
+}
+.toggle__button .fa-moon,
+.toggle__button .fa-sun {
+  font-size: 20px;
+  position: relative;
+  bottom: 0;
+  left: 4px;
+}
+.toggle__button .fa-moon {
+  color: var(--violet);
+}
+.toggle__button .fa-sun {
+  color: #fff;
+}
+
+.slider-light {
+  background-color: var(--checkedSliderRed);
+  transform: translateX(calc(var(--switchWidth) - var(--sliderRadius)));
+}
+
+.switch-light {
+  background-color: var(--checkedSwitchRed);
+}
 /* Footer */
 .footer {
   color: var(--violet);
@@ -66,10 +124,6 @@ span {
   font-weight: bold;
 }
 
-/* Icons */
-.svg-inline--fa {
-  color: var(--violet);
-}
 /* Buttons */
 .violet-btn {
   background-color: var(--violet);
@@ -130,70 +184,6 @@ label {
   justify-content: center;
   align-items: center;
   margin-right: 30px;
-
-  /* position is here to control checkbox placement*/
-  position: relative;
-}
-
-/* Checkbox */
-/* hide checkbox on screen */
-/* price :not and :checked for IE11 navigator */
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
-  position: absolute;
-  left: 0;
-  opacity: 0.01;
-}
-
-/* prepare label */
-[type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label {
-  position: relative;
-  padding-left: 2.3em;
-  font-size: 1.05em;
-  line-height: 1.7;
-  cursor: pointer;
-}
-
-/* Checkbox box styling */
-[type="checkbox"]:not(:checked) + label::before,
-[type="checkbox"]:checked + label::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -20px;
-  width: 1.4em;
-  height: 1.4em;
-  border: 1px solid var(--violet);
-  background: #fff;
-  border-radius: 0.2em;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 rgba(203, 34, 237, 0.2);
-  transition: all 0.275s;
-}
-
-/* Checkbox check styling */
-[type="checkbox"]:not(:checked) + label::after,
-[type="checkbox"]:checked + label::after {
-  content: "✕";
-  position: absolute;
-  top: 0.38em;
-  left: 0.18em;
-  font-size: 1.6em;
-  color: var(--violet);
-  line-height: 0;
-  transition: all 0.2s;
-}
-
-/* Checkbox non checked */
-[type="checkbox"]:not(:checked) + label::after {
-  opacity: 0;
-  transform: scale(0) rotate(45deg);
-}
-
-/* Checkbox checked */
-[type="checkbox"]:checked + label::after {
-  opacity: 1;
-  transform: scale(1) rotate(0);
 }
 
 .task--item {

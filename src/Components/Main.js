@@ -16,7 +16,8 @@ const Main = ({ light }) => {
   };
 
   // Add input value to tasklist
-  const addTask = () => {
+  const addTask = (event) => {
+    event.preventDefault();
     const newTaskList = [task, ...taskList];
     setTaskList(newTaskList);
     setTask(""); //empty value in input
@@ -30,6 +31,15 @@ const Main = ({ light }) => {
     setTaskList([...taskList]);
   };
 
+  //Search for tasks in tasklist
+  const [search, setSearch] = useState("");
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+  const searchedTask = taskList.filter((item) => {
+    return item.includes(search);
+  });
+
   // New array of completed tasks
   const [completeList, setCompleteList] = useState([]);
   const completeTask = (task) => {
@@ -42,15 +52,6 @@ const Main = ({ light }) => {
   const emptyCompleteList = () => {
     setCompleteList([]);
   };
-
-  //Search for tasks in tasklist
-  const [search, setSearch] = useState("");
-  const handleSearch = (event) => {
-    setSearch(event.target.value);
-  };
-  const searchedTask = taskList.filter((item) => {
-    return item.includes(search);
-  });
 
   return (
     <div className="main container">

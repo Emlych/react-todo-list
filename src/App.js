@@ -12,7 +12,7 @@ function App() {
   };
   return (
     <div className={light ? "app light" : "app dark"}>
-      <Header toggleLight={toggleLight} />
+      <Header light={light} toggleLight={toggleLight} />
       <Main light={light} />
       <Footer author="Emlych" techno="React" />
     </div>

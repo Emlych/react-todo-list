@@ -1,8 +1,27 @@
 import React from "react";
+import axios from "axios";
 
 const InputTask = ({ task, handleInput, addTask }) => {
+  //Link to backend
+  window.addEventListener("submit", async (event) => {
+    try {
+      event.preventDefault();
+
+      const data = { name: task }; //data that comes from input
+      //axios to send
+      const response = await axios.post(
+        "https://todo-list-eld.herokuapp.com/task/create",
+        data
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log("error message : ", error.message);
+      console.log("error response : ", error.response);
+    }
+  });
+
   return (
-    <div className="main__input">
+    <form onSubmit={addTask} className="main__input" id="input-task">
       <input
         type="text"
         name="task"
@@ -11,10 +30,13 @@ const InputTask = ({ task, handleInput, addTask }) => {
         value={task}
         onChange={handleInput}
       />
-      <button className="violet-btn" onClick={addTask}>
-        Add Task
-      </button>
-    </div>
+      <input
+        type="submit"
+        value="Add task"
+        className="violet-btn"
+        id="add-task"
+      />
+    </form>
   );
 };
 
