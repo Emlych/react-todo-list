@@ -13,6 +13,7 @@ const Task = ({ task, deleteTask, completeTask }) => {
           className="checkbox"
           onChange={() => completeTask(task)}
         />
+        <label></label>
         <div className="task--item">{task}</div>
       </div>
 
