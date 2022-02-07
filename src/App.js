@@ -10,6 +10,7 @@ function App() {
   const toggleLight = () => {
     setLight(!light);
   };
+
   return (
     <div className={light ? "app light" : "app dark"}>
       <Header light={light} toggleLight={toggleLight} />

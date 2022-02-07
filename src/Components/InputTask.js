@@ -4,13 +4,12 @@ import axios from "axios";
 const InputTask = ({ task, handleInput, addTask }) => {
   //Link to backend
   window.addEventListener("submit", async (event) => {
-    console.log("event ===>", event);
     try {
       event.preventDefault();
 
+      //once name:task works, add isComplete: false in data
       const data = { name: task }; //data that comes from input
       //axios to send
-      console.log("data ===>", data);
       const response = await axios.post(
         "https://todo-list-eld.herokuapp.com/task/create",
         data

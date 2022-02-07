@@ -37,7 +37,7 @@ const Main = ({ light }) => {
     setSearch(event.target.value);
   };
   const searchedTask = taskList.filter((item) => {
-    return item.includes(search);
+    return item.toLowerCase().includes(search);
   });
 
   // New array of completed tasks
